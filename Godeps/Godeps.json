@@ -1,6 +1,79 @@
 {
-	"ImportPath": "lotteryGame",
-	"GoVersion": "go1.8",
+	"ImportPath": "lotteryGame/utils",
+	"GoVersion": "go1.7",
 	"GodepVersion": "v79",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "golang.org/x/net/html",
+			"Rev": "ddf80d0970594e2e4cccf5a98861cad3d9eaa4cd"
+		},
+		{
+			"ImportPath": "golang.org/x/net/html/atom",
+			"Rev": "ddf80d0970594e2e4cccf5a98861cad3d9eaa4cd"
+		},
+		{
+			"ImportPath": "golang.org/x/net/html/charset",
+			"Rev": "ddf80d0970594e2e4cccf5a98861cad3d9eaa4cd"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding/charmap",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding/htmlindex",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding/internal",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding/internal/identifier",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding/japanese",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding/korean",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding/simplifiedchinese",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding/traditionalchinese",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/encoding/unicode",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/internal/tag",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/internal/utf8internal",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/language",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/runes",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		},
+		{
+			"ImportPath": "golang.org/x/text/transform",
+			"Rev": "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+		}
+	]
 }
