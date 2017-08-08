@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `drawlotterys`;
 CREATE TABLE `drawlotterys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `periodNo` varchar(256) NOT NULL COMMENT '期号',
-  `drawFirstNumber` int(11) NOT NULL COMMENT '开奖',
-  `drawSecondNumber` int(11) NOT NULL COMMENT '开奖',
-  `drawThirdNumber` int(11) NOT NULL COMMENT '开奖',
+  `drawFirstNumber` varchar(3) NOT NULL COMMENT '开奖',
+  `drawSecondNumber` varchar(3) NOT NULL COMMENT '开奖',
+  `drawThirdNumber` varchar(3) NOT NULL COMMENT '开奖',
   PRIMARY KEY (`id`,`periodNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='开奖';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-07 18:52:29
+-- Dump completed on 2017-08-08 19:08:42
