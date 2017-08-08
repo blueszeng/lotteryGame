@@ -1,7 +1,6 @@
 package redis
 
 import (
-	"log"
 	"lotteryGame/config"
 
 	"github.com/go-redis/redis"
@@ -15,9 +14,13 @@ func init() {
 		Password: config.RedisPassword, // no password set
 		DB:       config.RedisDB,       // use default DB
 	})
-	pong, err := client.Ping().Result()
-	if err != nil {
-		log.Fatal("connect redis error :", err)
-	}
-	log.Println(pong, err)
+	// pong, err := Client.Ping().Result()
+	// if err != nil {
+	// 	log.Fatal("connect redis error :", err)
+	// }
+	// log.Println(pong, err)
+}
+
+func GetRedis() *redis.Client {
+	return client
 }

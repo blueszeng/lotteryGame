@@ -1,8 +1,10 @@
 package utils
+
 import (
 	"crypto/rand"
 	"encoding/base64"
 	mrand "math/rand"
+	"time"
 )
 
 // RandomBytes returns securely generated random bytes. It will panic
@@ -23,12 +25,31 @@ var (
 	encodeURLLen = len(encodeURL)
 )
 
+func init() {
+	mrand.Seed(time.Now().UnixNano())
+}
+
+func byteString(p []byte) string {
+
+	return string(p)
+}
+
+func RandomNumberString(n int) string {
+	buf := make([]byte, n, n)
+	v := []byte("0123456789")
+	for i := 0; i < n; i++ {
+		buf[i] = v[mrand.Intn(10)]
+	}
+	return string(buf)
+}
+
 // RandomString returns a URL-safe, base64 encoded securely generated
 // random string. It will panic if the system's secure random number generator
 // fails to function correctly.
 // The length n must be an integer multiple of 4, otherwise the last character will be padded with `=`.
 func RandomString(n int) string {
 	d := base64.URLEncoding.DecodedLen(n)
+
 	buf := make([]byte, base64.URLEncoding.EncodedLen(d), n)
 	base64.URLEncoding.Encode(buf, RandomBytes(d))
 	for i := n - len(buf); i > 0; i-- {

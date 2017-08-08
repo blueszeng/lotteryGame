@@ -10,6 +10,7 @@ import (
 	"hash/crc32"
 	"hash/fnv"
 	"io"
+	"log"
 	r "math/rand"
 	"os"
 	"path"
@@ -19,7 +20,6 @@ import (
 	"strings"
 	"time"
 	"unsafe"
-	"log"
 
 	"golang.org/x/net/html/charset"
 )
@@ -125,7 +125,7 @@ func WalkFiles(targpath string, suffixes ...string) (filelist []string) {
 	})
 
 	if err != nil {
-		log.Error("util.WalkFiles: %v\n", err)
+		log.Fatal("util.WalkFiles: %v\n", err)
 		return
 	}
 
@@ -157,7 +157,7 @@ func WalkDir(targpath string, suffixes ...string) (dirlist []string) {
 	})
 
 	if err != nil {
-		log.Error("util.WalkDir: %v\n", err)
+		log.Fatal("util.WalkDir: %v\n", err)
 		return
 	}
 
@@ -190,7 +190,7 @@ func WalkRelFiles(targpath string, suffixes ...string) (filelist []string) {
 	})
 
 	if err != nil {
-		log.Error("util.WalkRelFiles: %v\n", err)
+		log.Fatal("util.WalkRelFiles: %v\n", err)
 		return
 	}
 
@@ -223,7 +223,7 @@ func WalkRelDir(targpath string, suffixes ...string) (dirlist []string) {
 	})
 
 	if err != nil {
-		log.Error("util.WalkRelDir: %v\n", err)
+		log.Fatal("util.WalkRelDir: %v\n", err)
 		return
 	}
 
@@ -315,7 +315,7 @@ func JsonString(obj interface{}) string {
 //检查并打印错误
 func CheckErr(err error) {
 	if err != nil {
-		log.Error("%v", err)
+		log.Fatal("%v", err)
 	}
 }
 func CheckErrPanic(err error) {

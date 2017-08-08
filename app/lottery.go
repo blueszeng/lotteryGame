@@ -1,7 +1,5 @@
 package app
 
-import "log"
-
 const (
 	IDE = iota
 	RUN
@@ -9,33 +7,25 @@ const (
 )
 
 type Lottery struct {
-	status   int
-	task     *Task
-	runState chan bool
+	status int
+	task   *Task
+	finish chan bool
 }
 
-func New(count, roundTime, calculatTime, firstGroup, scondGroup,
-	thirdGroup int64, selectRatio func()) *Lottery {
+func New(count, roundTime, calculatTime, nextperiod int64, firstGroup, scondGroup string, selectRatio func()) *Lottery {
 	return &Lottery{
-		status:   IDE,
-		task:     TaskNew(count, roundTime, calculatTime, firstGroup, scondGroup, thirdGroup, selectRatio),
-		runState: make(chan bool),
+		status: IDE,
+		task:   TaskNew(count, roundTime, calculatTime, nextperiod, firstGroup, scondGroup, selectRatio),
 	}
 }
 
-func (self *Lottery) run() {
+func (self *Lottery) start() {
 	if self.status != IDE {
 		return
 	}
 	self.status = RUN
-	go func() {
-		self.task.Start()
-	}()
-	select {
-	case <-self.runState:
-		log.Println("fuck")
-		return
-	}
+	self.finish = make(chan bool)
+	self.task.Start(self.finish)
 }
 
 func (self *Lottery) stop() {
@@ -43,8 +33,5 @@ func (self *Lottery) stop() {
 		return
 	}
 	self.status = STOP
-	self.task.Status <- true
-	defer func() {
-		self.runState <- true
-	}()
+	self.finish <- true
 }
