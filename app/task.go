@@ -10,24 +10,6 @@ import (
 	"github.com/robfig/cron"
 )
 
-var rateConfig map[int64]string
-
-func init() {
-	rateConfig = map[int64]string{}
-	var rateData []struct {
-		Id         int64  `db:"id"`
-		SelectName string `db:"selectName"`
-	}
-	db.GetDb().Select(&rateData, "SELECT id, selectName from rates")
-	if len(rateData) == 0 {
-		return
-	}
-	for i := 0; i < len(rateData); i++ {
-		rateConfig[rateData[i].Id] = rateData[i].SelectName
-	}
-	// fmt.Print(rateConfig)
-}
-
 type Task struct {
 	Nextperiod   int64        // 下一期
 	Counter      int64        // 计数器
@@ -65,6 +47,7 @@ func (self *Task) Start(status chan bool) {
 	cron.AddFunc("*/1 * * * * *",
 		func() {
 			self.Counter++
+			updateCounter(self.Counter) // 更新定时器
 			countDown := (self.RoundTime - (self.Counter % self.RoundTime))
 			if countDown == self.RoundTime-self.CalculatTime {
 				result := self.DrawLoty.Draw() //生成投注组
@@ -87,6 +70,13 @@ func (self *Task) Start(status chan bool) {
 		})
 	<-status
 
+}
+
+func updateCounter(counter int64) {
+	err := redis.GetRedis().Set("global_counter", counter, 0).Err()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func calculateUserBets(plottry *PeriodLottery) {
@@ -162,7 +152,7 @@ func writeDrawLotteryData(plottry *PeriodLottery) {
 		log.Fatal("insert error", err)
 	}
 
-	key := "gloabDrawLotteryPush"
+	key := "global_drawLottery_push"
 	pipe := redis.GetRedis().Pipeline()
 	pipe.LPush(key, plottry.Currperiod)
 	mapValue := map[string]interface{}{
