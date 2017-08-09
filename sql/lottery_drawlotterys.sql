@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `drawlotterys`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `drawlotterys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `periodNo` varchar(256) NOT NULL COMMENT '期号',
+  `periodNo` varchar(20) NOT NULL COMMENT '期号',
   `drawFirstNumber` varchar(3) NOT NULL COMMENT '开奖',
   `drawSecondNumber` varchar(3) NOT NULL COMMENT '开奖',
   `drawThirdNumber` varchar(3) NOT NULL COMMENT '开奖',
