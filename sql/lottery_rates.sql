@@ -25,10 +25,9 @@ DROP TABLE IF EXISTS `rates`;
 CREATE TABLE `rates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sceneId` int(11) NOT NULL COMMENT '0大小场， 1数组场， 2精确',
-  `select` int(11) NOT NULL COMMENT '''选项值''',
   `ratio` float DEFAULT NULL COMMENT '比率',
   `selectName` varchar(45) NOT NULL COMMENT '下注选项名称',
-  PRIMARY KEY (`id`,`sceneId`,`selectName`,`select`)
+  PRIMARY KEY (`id`,`sceneId`,`selectName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='陪率';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,7 +37,7 @@ CREATE TABLE `rates` (
 
 LOCK TABLES `rates` WRITE;
 /*!40000 ALTER TABLE `rates` DISABLE KEYS */;
-INSERT INTO `rates` VALUES (1,0,0,1.9,'大'),(2,0,1,1.9,'小'),(3,0,2,7,'合'),(4,1,0,3.5,'01'),(5,1,1,3.5,'23'),(6,1,2,3.5,'45'),(7,1,3,3.5,'67'),(8,1,4,3.5,'89'),(9,1,5,2.5,'012'),(10,1,6,2.5,'345'),(11,1,7,2.5,'678'),(12,2,0,7,'0'),(13,2,1,7,'1'),(14,2,2,7,'2'),(15,2,3,7,'3'),(16,2,4,7,'4'),(17,2,5,7,'5'),(18,2,6,7,'6'),(19,2,7,7,'7'),(20,2,8,7,'8'),(21,2,9,7,'9');
+INSERT INTO `rates` VALUES (0,0,1.9,'大'),(1,0,1.9,'小'),(2,0,7,'合'),(3,1,3.5,'01'),(4,1,3.5,'23'),(5,1,3.5,'45'),(6,1,3.5,'67'),(7,1,3.5,'89'),(8,1,2.5,'012'),(9,1,2.5,'345'),(10,1,2.5,'678'),(11,2,7,'0'),(12,2,7,'1'),(13,2,7,'2'),(14,2,7,'3'),(15,2,7,'4'),(16,2,7,'5'),(17,2,7,'6'),(18,2,7,'7'),(19,2,7,'8'),(20,2,7,'9');
 /*!40000 ALTER TABLE `rates` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-08 19:08:42
+-- Dump completed on 2017-08-09 19:04:55
