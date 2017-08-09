@@ -5,7 +5,7 @@ import "log"
 var lottery *Lottery
 
 func init() {
-	lottery = New(0, 2, 1, 0, "110", "121", func() {
+	lottery = New(0, 10, 5, 50, "110", "121", func() {
 		log.Println("message")
 	})
 }
