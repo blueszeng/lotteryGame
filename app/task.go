@@ -163,6 +163,7 @@ func writeDrawLotteryData(plottry *PeriodLottery) {
 		"result":           plottry.Result,
 	}
 	pipe.HMSet(plottry.Currperiod, mapValue)
+	pipe.PExpire(plottry.Currperiod, time.Minute*10)
 	_, err = pipe.Exec()
 	if err != nil {
 		log.Fatal(err)
