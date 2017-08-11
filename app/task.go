@@ -152,7 +152,7 @@ func writeDrawLotteryData(plottry *PeriodLottery) {
 		log.Fatal("insert error", err)
 	}
 
-	key := "global_drawLottery_push"
+	key := "global_drawLottery_queue"
 	pipe := redis.GetRedis().Pipeline()
 	pipe.LPush(key, plottry.Currperiod)
 	mapValue := map[string]interface{}{

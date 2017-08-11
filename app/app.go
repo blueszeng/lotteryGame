@@ -3,6 +3,7 @@ package app
 import (
 	"log"
 	"lotteryGame/common/db"
+	"lotteryGame/common/redis"
 	"strconv"
 )
 
@@ -21,8 +22,24 @@ func init() {
 	if len(rateData) == 0 {
 		return
 	}
+	key := "global_ratetype_config"
+	cacheRateConfig := map[string]interface{}{}
 	for i := 0; i < len(rateData); i++ {
 		rateConfig[rateData[i].Id] = rateData[i].SelectName
+		// cacheRateConfig[strconv.FormatInt(rateData[i].Id, 10)] = rateData[i].SelectName
+		cacheRateConfig[rateData[i].SelectName] = rateData[i].Id
+	}
+	// fmt.Println(rateData)
+	// fmt.Println(rateConfig)
+	// fmt.Println(cacheRateConfig)
+	err := redis.GetRedis().Del(key).Err()
+	if err != nil {
+		log.Println("delete cache error", err)
+	} else {
+		err = redis.GetRedis().HMSet(key, cacheRateConfig).Err()
+		if err != nil {
+			log.Fatal("write cache error", err)
+		}
 	}
 	var configData struct {
 		Id               int    `db:"id"`
