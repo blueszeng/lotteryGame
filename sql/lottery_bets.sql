@@ -33,7 +33,7 @@ CREATE TABLE `bets` (
   `state` int(11) NOT NULL DEFAULT '0' COMMENT '状态\n0 末开奖\n1 中奖\n2 末中奖',
   `updateTime` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`,`rateId`,`periodNo`,`money`,`win`,`state`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='投注';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='投注';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-09 19:04:54
+-- Dump completed on 2017-08-11 18:25:04

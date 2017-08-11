@@ -28,7 +28,7 @@ CREATE TABLE `rates` (
   `ratio` float DEFAULT NULL COMMENT '比率',
   `selectName` varchar(45) NOT NULL COMMENT '下注选项名称',
   PRIMARY KEY (`id`,`sceneId`,`selectName`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='陪率';
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='陪率';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-09 19:04:55
+-- Dump completed on 2017-08-11 18:25:04
